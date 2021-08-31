@@ -20,26 +20,11 @@ function Slider(props: Props) {
 
   return (
     <SliderContainer>
-      {/* <div className="slider-container">
-        <div className="swiper-wrapper">
-          {
-            bannerList.map(slider => {
-              return (
-                <div className="swiper-slide" key={slider.imageUrl}>
-                  <div className="slider-nav">
-                    <img src={slider.imageUrl} width="100%" height="100%" alt="推荐" />
-                  </div>
-                </div>
-              )
-            })
-          }
-        </div>
-        <div className="swiper-pagination"></div>
-      </div> */}
-      <Swiper pagination={true}>
+      <div className="before"></div>
+      <Swiper pagination={true} loop={true} className="slider-container">
         {bannerList.map((slider) => {
           return (
-            <SwiperSlide>
+            <SwiperSlide key={slider.imageUrl}>
               <div className='slider-nav'>
                 <img
                   src={slider.imageUrl}
