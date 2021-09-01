@@ -18,8 +18,6 @@ SwiperCore.use([Pagination])
 function Slider(props: Props) {
   const { bannerList } = props
 
-  console.log('props.bannerList', bannerList)
-
   return (
     <SliderContainer>
       <div className="before"></div>

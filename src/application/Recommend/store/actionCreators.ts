@@ -32,7 +32,6 @@ export const getBannerList = () => {
     // if (!isError && !isLoading) dispatch(changeBannerList(banner))
     // if (isError) console.log(isError)
     getBannerRequest().then(data => {
-      console.log(data)
       dispatch(changeBannerList(data.banners))
     }).catch(() => {
       console.log('轮播图出错了')
@@ -46,7 +45,6 @@ export const getRecommendList = () => {
     // if (!isError && !isLoading) dispatch(changeRecommendList(recommendList))
     // if (isError) console.log(isError)
     getRecommendListRequest().then(data => {
-      console.log(data)
       dispatch(changeRecommendList(data.result))
     }).catch(() => {
       console.log('推荐歌单出错了')

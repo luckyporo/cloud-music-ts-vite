@@ -24,9 +24,6 @@ function Recommend(props: Props) {
   const bannerListJS = bannerList ? bannerList.toJS() : []
   const recommendListJS = recommendList ? recommendList.toJS() : []
 
-  console.log(bannerListJS)
-  console.log(recommendListJS)
-
   return (
     <Content>
       <Scroll className='List'>
