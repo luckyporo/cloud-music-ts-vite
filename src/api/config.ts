@@ -1,10 +1,10 @@
 import axios from 'axios'
 
-export const baseUrl = 'https://vercel.com/luckyporo/netease-cloud-music-api'
+export const baseUrl = 'https://netease-cloud-music-api-luckyporo.vercel.app'
 
 //axios 的实例及拦截器配置
 const axiosInstance = axios.create({
-  baseURL: baseUrl
+  baseURL: baseUrl,
 })
 
 axiosInstance.interceptors.response.use(
