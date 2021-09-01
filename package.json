@@ -7,6 +7,7 @@
     "serve": "vite preview"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "better-scroll": "^2.4.2",
     "immutable": "^4.0.0-rc.14",
     "react": "^17.0.0",
@@ -21,6 +22,7 @@
     "redux-thunk": "^2.3.0",
     "styled-components": "^5.3.1",
     "swiper": "^7.0.2",
+    "swr": "^1.0.0",
     "typescript": "^4.1.2"
   },
   "devDependencies": {
