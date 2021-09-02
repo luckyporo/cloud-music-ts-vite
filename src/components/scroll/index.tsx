@@ -20,8 +20,7 @@ type Props = {
   onScroll?: (scroll: any) => void
   pullUp?: () => void
   pullDown?: () => void
-  children: any
-  className: any
+  children?: React.ReactNode;
 }
 
 const Scroll = forwardRef((props: Props, ref) => {

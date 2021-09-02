@@ -1,7 +1,9 @@
 import React, { memo, useEffect } from 'react'
 import { connect } from 'react-redux'
 import * as actionTypes from './store/actionCreators'
+import { forceCheck } from 'react-lazyload'
 
+import Loading from '../../baseUI/loading'
 import Slider from '../../components/slider'
 import RecommendList from '../../components/list'
 import Scroll from '../../components/scroll'
@@ -12,8 +14,7 @@ type Props = {
 }
 
 function Recommend(props: Props) {
-  const { bannerList, recommendList } = props
-
+  const { bannerList, recommendList, enterLoading } = props
   const { getBannerDataDispatch, getRecommendListDataDispatch } = props
 
   useEffect(() => {
@@ -26,12 +27,13 @@ function Recommend(props: Props) {
 
   return (
     <Content>
-      <Scroll className='List'>
+      <Scroll onScroll={forceCheck}>
         <div>
           <Slider bannerList={bannerListJS}></Slider>
           <RecommendList recommendList={recommendListJS}></RecommendList>
         </div>
       </Scroll>
+      { enterLoading ? <Loading></Loading> : null }
     </Content>
   )
 }
@@ -42,6 +44,7 @@ const mapStateToProps = (state: any) => ({
   // 不然每次 diff 比对 props 的时候都是不一样的引用，还是导致不必要的重渲染，属于滥用 immutable
   bannerList: state.getIn(['recommend', 'bannerList']),
   recommendList: state.getIn(['recommend', 'recommendList']),
+  enterLoading: state.getIn(['recommend', 'enterLoading'])
 })
 // 映射 dispatch 到 props 上
 const mapDispatchToProps = (dispatch: any) => {

@@ -1,15 +1,10 @@
-export interface bannerType {
+export type Banner = {
   imageUrl: string;
   url: string;
 }
-export interface recommendType {
+export type Recommend = {
   name: string;
   picUrl: string;
   trackCount: number;
   playCount: number;
-}
-
-export interface RecommendStateType {
-  bannerList: bannerType[];
-  recommendList: recommendType[];
 }
