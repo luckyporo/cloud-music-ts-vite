@@ -1,10 +1,10 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
 import { RouteConfig } from 'react-router-config'
-import Home from '../application/Home'
-import Recommend from '../application/Recommend'
-import Singers from '../application/Singers'
-import Rank from '../application/Rank'
+import Home from '../app/Home'
+import Recommend from '../app/Recommend'
+import Singers from '../app/Singers'
+import Rank from '../app/Rank'
 
 const routes: RouteConfig[] = [
   {

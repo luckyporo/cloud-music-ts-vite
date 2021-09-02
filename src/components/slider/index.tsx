@@ -20,8 +20,8 @@ function Slider(props: Props) {
 
   return (
     <SliderContainer>
-      <div className="before"></div>
-      <Swiper pagination={true} loop={true} className="slider-container">
+      <div className='before'></div>
+      <Swiper pagination={true} loop={true} className='slider-container'>
         {bannerList.map((slider) => {
           return (
             <SwiperSlide key={slider.imageUrl}>

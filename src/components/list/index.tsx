@@ -1,13 +1,13 @@
 import React, { memo } from 'react'
 import LazyLoad from 'react-lazyload'
-import { getCount } from '../../api/utils'
+import { getCount } from '../../utils/utils'
 import {
   ListWrapper,
   ListItem,
   List
 } from './style'
 
-import placeHolderImg from './music.png'
+import placeHolderImg from '/img/music.png'
 
 type Props = {
   recommendList: {
