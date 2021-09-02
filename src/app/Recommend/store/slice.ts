@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { getBannerListRequest, getRecommendListRequest } from '../../../utils/request';
-import { RootState } from '../../../store/types';
+import { getBannerListRequest, getRecommendListRequest } from '@/utils/request';
+import { RootState } from '@/store/types';
 import { Banner, Recommend, RecommendState } from './types';
 
 const initialState: RecommendState = {
@@ -18,12 +18,10 @@ export const recommendSlice = createSlice({
   reducers: {},
   extraReducers: {
     [getBannerList.fulfilled.type]: (state, action: PayloadAction<{ banners: Banner[]}>) => {
-      // console.log('getBannerListAction', action)
       state.bannerList = action.payload.banners
       state.enterLoading = false
     },
     [getRecommendList.fulfilled.type]: (state, action: PayloadAction<{ result: Recommend[] }>) => {
-      // console.log('getRecommendListAction', action)
       state.recommendList = action.payload.result
     }
   }

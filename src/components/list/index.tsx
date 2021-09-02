@@ -1,6 +1,6 @@
 import React, { memo } from 'react'
 import LazyLoad from 'react-lazyload'
-import { getCount } from '../../utils/utils'
+import { getCount } from '@/utils/utils'
 import {
   ListWrapper,
   ListItem,

@@ -1,13 +1,13 @@
 import React, { memo, useEffect } from 'react'
 import { forceCheck } from 'react-lazyload'
 
-import Loading from '../../layout/loading'
-import Slider from '../../components/slider'
-import RecommendList from '../../components/list'
-import Scroll from '../../components/scroll'
+import Loading from '@/layout/loading'
+import Slider from '@/components/slider'
+import RecommendList from '@/components/list'
+import Scroll from '@/components/scroll'
 import { Content } from './style'
 
-import { useAppDispatch, useAppSelector } from '../../store/hooks'
+import { useAppDispatch, useAppSelector } from '@/store/hooks'
 import {
   getBannerList,
   getRecommendList,

@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { Banner, Recommend } from "../app/Recommend/store/types"
+import { Banner, Recommend } from "@/app/Recommend/store/types"
 
 export const BASE_URL = 'https://netease-cloud-music-api-luckyporo.vercel.app'
 

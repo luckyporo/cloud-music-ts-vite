@@ -14,7 +14,7 @@ function Home(props: Props) {
     <div>
       <Top>
         <span className='iconfont menu'>&#xe65c;</span>
-        <span className='title'>Music</span>
+        <span className='title'> Music </span>
         <span className='iconfont search'>&#xe62b;</span>
       </Top>
       <Tab>
