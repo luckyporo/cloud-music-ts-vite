@@ -33,13 +33,11 @@ const LoadingWrapper = styled.div`
   }
 `
 
-function Loading() {
-  return (
-    <LoadingWrapper>
-      <div></div>
-      <div></div>
-    </LoadingWrapper>
-  )
-}
+const Loading = () => (
+  <LoadingWrapper>
+    <div></div>
+    <div></div>
+  </LoadingWrapper>
+)
 
 export default memo(Loading)

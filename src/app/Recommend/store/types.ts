@@ -1,8 +1,8 @@
-export type Banner = {
+export interface Banner {
   imageUrl: string
   url: string
 }
-export type Recommend = {
+export interface Recommend {
   id: number
   name: string
   picUrl: string

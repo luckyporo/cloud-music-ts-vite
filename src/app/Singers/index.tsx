@@ -1,7 +1,5 @@
 import React, { memo } from 'react'
 
-function Singers() {
-  return <div>signers</div>
-}
+const Singers = () => <div>signers</div>
 
 export default memo(Singers)

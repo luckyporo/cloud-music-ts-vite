@@ -16,7 +16,7 @@ import {
 } from './store/slice'
 import { Content } from './style'
 
-const Recommend: React.FC = () => {
+const Recommend = () => {
   const bannerList = useAppSelector(selectBannerList)
   const recommendList = useAppSelector(selectRecommendList)
   const enterLoading = useAppSelector(selectEnterLoading)

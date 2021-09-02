@@ -8,16 +8,14 @@ import routes from './routes'
 import store from './store'
 import { GlobalStyle } from './style'
 
-function App() {
-  return (
-    <Provider store={store}>
-      <HashRouter>
-        <GlobalStyle></GlobalStyle>
-        <IconStyle></IconStyle>
-        {renderRoutes(routes)}
-      </HashRouter>
-    </Provider>
-  )
-}
+const App = () => (
+  <Provider store={store}>
+    <HashRouter>
+      <GlobalStyle></GlobalStyle>
+      <IconStyle></IconStyle>
+      {renderRoutes(routes)}
+    </HashRouter>
+  </Provider>
+)
 
 export default App
