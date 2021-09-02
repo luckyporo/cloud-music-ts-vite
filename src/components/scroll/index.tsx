@@ -1,12 +1,13 @@
 import BScroll from '@better-scroll/core'
 import { BScrollConstructor } from '@better-scroll/core/dist/types/BScroll'
 import React, {
+  forwardRef,
   useEffect,
+  useImperativeHandle,
   useRef,
   useState,
-  forwardRef,
-  useImperativeHandle,
 } from 'react'
+
 import { ScrollContainer } from './style'
 
 type Props = {
@@ -17,25 +18,18 @@ type Props = {
   pullDownLoading?: boolean
   bounceTop?: boolean
   bounceBottom?: boolean
+  // eslint-disable-next-line no-unused-vars
   onScroll?: (scroll: any) => void
   pullUp?: () => void
   pullDown?: () => void
-  children?: React.ReactNode;
+  children?: React.ReactNode
 }
 
 const Scroll = forwardRef((props: Props, ref) => {
   const [bScroll, setBScroll] = useState<BScrollConstructor | null>(null)
   const scrollContainerRef = useRef<HTMLDivElement>(null)
 
-  const {
-    direction,
-    click,
-    refresh,
-    pullDownLoading,
-    pullUpLoading,
-    bounceTop,
-    bounceBottom,
-  } = props
+  const { direction, click, refresh, bounceTop, bounceBottom } = props
   const { pullUp, pullDown, onScroll } = props
 
   useEffect(() => {
@@ -119,9 +113,7 @@ const Scroll = forwardRef((props: Props, ref) => {
     },
   }))
 
-  return (
-    <ScrollContainer ref={scrollContainerRef}>{props.children}</ScrollContainer>
-  )
+  return <ScrollContainer ref={scrollContainerRef}>{props.children}</ScrollContainer>
 })
 
 Scroll.defaultProps = {

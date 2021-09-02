@@ -1,13 +1,12 @@
 import React, { memo, useEffect } from 'react'
 import { forceCheck } from 'react-lazyload'
 
-import Loading from '@/layout/loading'
-import Slider from '@/components/slider'
 import RecommendList from '@/components/list'
 import Scroll from '@/components/scroll'
-import { Content } from './style'
-
+import Slider from '@/components/slider'
+import Loading from '@/layout/loading'
 import { useAppDispatch, useAppSelector } from '@/store/hooks'
+
 import {
   getBannerList,
   getRecommendList,
@@ -15,6 +14,7 @@ import {
   selectEnterLoading,
   selectRecommendList,
 } from './store/slice'
+import { Content } from './style'
 
 const Recommend: React.FC = () => {
   const bannerList = useAppSelector(selectBannerList)

@@ -1,10 +1,6 @@
 import React, { memo } from 'react'
 
-type Props = {
-  [key: string]: any
-}
-
-function Singers(props: Props) {
+function Singers() {
   return <div>signers</div>
 }
 

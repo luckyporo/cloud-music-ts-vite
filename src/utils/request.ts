@@ -1,5 +1,6 @@
 import axios from 'axios'
-import { Banner, Recommend } from "@/app/Recommend/store/types"
+
+import { Banner, Recommend } from '@/app/Recommend/store/types'
 
 export const BASE_URL = 'https://netease-cloud-music-api-luckyporo.vercel.app'
 
@@ -9,16 +10,16 @@ const instance = axios.create({
 })
 
 instance.interceptors.response.use(
-  res => res.data,
-  err => {
-    console.log(err, "网络错误")
-  }
+  (res) => res.data,
+  (err) => {
+    console.log(err, '网络错误')
+  },
 )
 
 export const getBannerListRequest = (): Promise<{ banners: Banner[] }> => {
-  return instance.get('/banner');
+  return instance.get('/banner')
 }
 
 export const getRecommendListRequest = (): Promise<{ result: Recommend[] }> => {
-  return instance.get('/personalized');
+  return instance.get('/personalized')
 }

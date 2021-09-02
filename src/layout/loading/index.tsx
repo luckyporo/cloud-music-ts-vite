@@ -1,5 +1,6 @@
 import React, { memo } from 'react'
 import styled, { keyframes } from 'styled-components'
+
 import style from '@/assets/global-style'
 
 const loading = keyframes`
@@ -28,7 +29,7 @@ const LoadingWrapper = styled.div`
     animation: ${loading} 1.4s infinite ease-in;
   }
   > div::nth-child(2) {
-    animation-delay: -0.7s
+    animation-delay: -0.7s;
   }
 `
 

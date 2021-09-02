@@ -1,10 +1,6 @@
 import React, { memo } from 'react'
 
-type Props = {
-  [key: string]: any
-}
-
-function Rank(props: Props) {
+function Rank() {
   return <div>rank</div>
 }
 

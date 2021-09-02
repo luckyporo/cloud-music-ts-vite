@@ -1,5 +1,6 @@
-import { Action, ThunkAction } from "@reduxjs/toolkit"
-import store from "."
+import { Action, ThunkAction } from '@reduxjs/toolkit'
+
+import store from '.'
 
 export type AppDispatch = typeof store.dispatch
 

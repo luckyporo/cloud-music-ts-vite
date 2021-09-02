@@ -1,35 +1,36 @@
 import React from 'react'
-import { Redirect } from 'react-router-dom'
 import { RouteConfig } from 'react-router-config'
+import { Redirect } from 'react-router-dom'
+
 import Home from '@/app/Home'
+import Rank from '@/app/Rank'
 import Recommend from '@/app/Recommend'
 import Singers from '@/app/Singers'
-import Rank from '@/app/Rank'
 
 const routes: RouteConfig[] = [
   {
-    path: "/",
+    path: '/',
     component: Home,
     routes: [
       {
-        path: "/",
+        path: '/',
         exact: true,
-        render: () => (<Redirect to={"/recommend"} />)
+        render: () => <Redirect to={'/recommend'} />,
       },
       {
-        path: "/recommend",
-        component: Recommend
+        path: '/recommend',
+        component: Recommend,
       },
       {
-        path: "/singers",
-        component: Singers
+        path: '/singers',
+        component: Singers,
       },
       {
-        path: "/rank",
-        component: Rank
-      }
-    ]
-  }
+        path: '/rank',
+        component: Rank,
+      },
+    ],
+  },
 ]
 
 export default routes
