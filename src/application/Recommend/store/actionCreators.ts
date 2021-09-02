@@ -1,45 +1,41 @@
 import * as actionTypes from './constants'
-import { fromJS } from 'immutable'
 import { getBannerRequest, getRecommendListRequest } from '../../../api/request'
 import { Banner, Recommend } from './data'
 
-export interface changeBannerListType {
+export type changeBannerList = {
   type: typeof actionTypes.CHANGE_BANNER
-  data: Banner[]
+  payload: Banner[]
 }
 
-export interface changeRecommendListType {
+export type changeRecommendList = {
   type: typeof actionTypes.CHANGE_RECOMMEND_LIST
-  data: Recommend[]
+  payload: Recommend[]
 }
 
-export interface changeEnterLoadingType {
+export type changeEnterLoading = {
   type: typeof actionTypes.CHANGE_ENTER_LOADING
-  data: boolean
+  payload: boolean
 }
 
-export type RecommendActionTypes = changeBannerListType | changeRecommendListType | changeEnterLoadingType
+export type RecommendAction = changeBannerList | changeRecommendList | changeEnterLoading
 
-export const changeBannerList = (data: Banner[]): changeBannerListType => ({
+export const changeBannerList = (payload: Banner[]): changeBannerList => ({
   type: actionTypes.CHANGE_BANNER,
-  data: fromJS(data) as Banner[],
+  payload,
 })
 
-export const changeRecommendList = (data: Recommend[]): changeRecommendListType => ({
+export const changeRecommendList = (payload: Recommend[]): changeRecommendList => ({
   type: actionTypes.CHANGE_RECOMMEND_LIST,
-  data: fromJS(data) as Recommend[],
+  payload,
 })
 
-export const changeEnterLoading = (data: boolean): changeEnterLoadingType => ({
+export const changeEnterLoading = (payload: boolean): changeEnterLoading => ({
   type: actionTypes.CHANGE_ENTER_LOADING,
-  data
+  payload
 })
 
 export const getBannerList = () => {
   return (dispatch: any) => {
-    // const { banner, isError, isLoading } = useBanner()
-    // if (!isError && !isLoading) dispatch(changeBannerList(banner))
-    // if (isError) console.log(isError)
     getBannerRequest().then(data => {
       dispatch(changeBannerList(data.banners))
       dispatch(changeEnterLoading(false))
@@ -51,9 +47,6 @@ export const getBannerList = () => {
 
 export const getRecommendList = () => {
   return (dispatch: any) => {
-    // const { recommendList, isError, isLoading } = useRecommendList()
-    // if (!isError && !isLoading) dispatch(changeRecommendList(recommendList))
-    // if (isError) console.log(isError)
     getRecommendListRequest().then(data => {
       dispatch(changeRecommendList(data.result))
     }).catch(() => {

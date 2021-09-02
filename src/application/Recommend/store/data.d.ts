@@ -8,3 +8,9 @@ export type Recommend = {
   trackCount: number;
   playCount: number;
 }
+
+export interface RecommendState {
+  bannerList: Banner[]
+  recommendList: Recommend[]
+  enterLoading: boolean
+}

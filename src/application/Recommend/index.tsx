@@ -18,19 +18,16 @@ function Recommend(props: Props) {
   const { getBannerDataDispatch, getRecommendListDataDispatch } = props
 
   useEffect(() => {
-    getBannerDataDispatch()
-    getRecommendListDataDispatch()
+    if(!bannerList?.length) getBannerDataDispatch()
+    if(!recommendList?.length) getRecommendListDataDispatch()
   }, [])
-
-  const bannerListJS = bannerList ? bannerList.toJS() : []
-  const recommendListJS = recommendList ? recommendList.toJS() : []
 
   return (
     <Content>
       <Scroll onScroll={forceCheck}>
         <div>
-          <Slider bannerList={bannerListJS}></Slider>
-          <RecommendList recommendList={recommendListJS}></RecommendList>
+          <Slider bannerList={bannerList}></Slider>
+          <RecommendList recommendList={recommendList}></RecommendList>
         </div>
       </Scroll>
       { enterLoading ? <Loading></Loading> : null }
@@ -40,11 +37,9 @@ function Recommend(props: Props) {
 
 // 映射 Redux 全局的 state 到组件的 props 上
 const mapStateToProps = (state: any) => ({
-  // 不要在这里将数据 toJS
-  // 不然每次 diff 比对 props 的时候都是不一样的引用，还是导致不必要的重渲染，属于滥用 immutable
-  bannerList: state.getIn(['recommend', 'bannerList']),
-  recommendList: state.getIn(['recommend', 'recommendList']),
-  enterLoading: state.getIn(['recommend', 'enterLoading'])
+  bannerList: state.recommend.bannerList,
+  recommendList: state.recommend.recommendList,
+  enterLoading: state.recommend.enterLoading
 })
 // 映射 dispatch 到 props 上
 const mapDispatchToProps = (dispatch: any) => {
