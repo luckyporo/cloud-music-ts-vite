@@ -1,5 +1,5 @@
 import BScroll from '@better-scroll/core'
-import { BScrollConstructor } from '@better-scroll/core/dist/types/BScroll'
+import { BScrollInstance } from '@better-scroll/core/dist/types'
 import React, {
   forwardRef,
   useEffect,
@@ -18,8 +18,7 @@ type Props = {
   pullDownLoading?: boolean
   bounceTop?: boolean
   bounceBottom?: boolean
-  // eslint-disable-next-line no-unused-vars
-  onScroll?: (scroll: any) => void
+  onScroll?: () => void
   pullUp?: () => void
   pullDown?: () => void
   children: React.ReactNode
@@ -40,7 +39,7 @@ const Scroll = forwardRef(
     }: Props,
     ref,
   ) => {
-    const [bScroll, setBScroll] = useState<BScrollConstructor | null>(null)
+    const [bScroll, setBScroll] = useState<BScrollInstance | null>(null)
     const scrollContainerRef = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
@@ -65,8 +64,8 @@ const Scroll = forwardRef(
     useEffect(() => {
       if (refresh && bScroll && onScroll) {
         const hooks = bScroll.scroller.actions.hooks
-        hooks.on('scroll', (scroll: any) => {
-          onScroll(scroll)
+        hooks.on('scroll', () => {
+          onScroll()
         })
 
         return () => {
@@ -93,7 +92,7 @@ const Scroll = forwardRef(
     useEffect(() => {
       if (!bScroll || !pullDown) return
       const hooks = bScroll.scroller.hooks
-      hooks.on('touchEnd', (pos: any) => {
+      hooks.on('touchEnd', (pos: BScrollInstance) => {
         // 判断用户的下拉动作
         if (pos.y > 50) {
           pullDown()

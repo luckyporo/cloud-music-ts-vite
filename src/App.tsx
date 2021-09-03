@@ -8,7 +8,7 @@ import routes from './routes'
 import store from './store'
 import { GlobalStyle } from './style'
 
-const App = () => (
+const App = (): JSX.Element => (
   <Provider store={store}>
     <HashRouter>
       <GlobalStyle></GlobalStyle>

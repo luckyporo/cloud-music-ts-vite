@@ -1,4 +1,10 @@
-export const getCount = (count: number) => {
+export type PartialOptional<T, K extends keyof T> = {
+  [P in K]?: T[P]
+}
+
+export type ReturnElementType<T extends unknown[]> = T extends (infer U)[] ? U : never
+
+export const getCount = (count: number): number | string | void => {
   if (count < 0) return
   if (count < 10000) {
     return count
