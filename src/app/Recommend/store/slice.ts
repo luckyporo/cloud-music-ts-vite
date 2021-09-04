@@ -41,12 +41,10 @@ export const recommendSlice = createSlice({
   },
 })
 
-export const selectBannerList = (state: RootState): Banner[] => state.recommend.bannerList
+export const selectBannerList = (state: RootState) => state.recommend.bannerList
 
-export const selectRecommendList = (state: RootState): Recommend[] =>
-  state.recommend.recommendList
+export const selectRecommendList = (state: RootState) => state.recommend.recommendList
 
-export const selectEnterLoading = (state: RootState): boolean =>
-  state.recommend.enterLoading
+export const selectEnterLoading = (state: RootState) => state.recommend.enterLoading
 
 export default recommendSlice.reducer

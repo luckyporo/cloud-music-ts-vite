@@ -1,10 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
 
-import { recommendReducer } from './reducers'
+import { recommendReducer, singersReducer } from './reducers'
 
 const store = configureStore({
   reducer: {
     recommend: recommendReducer,
+    singers: singersReducer,
   },
 })
 

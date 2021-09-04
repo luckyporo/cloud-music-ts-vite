@@ -1,3 +1,4 @@
 import recommendReducer from '@/app/Recommend/store/slice'
+import singersReducer from '@/app/Singers/store/slice'
 
-export { recommendReducer }
+export { recommendReducer, singersReducer }

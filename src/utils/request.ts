@@ -1,6 +1,7 @@
 import axios from 'axios'
 
 import { Banner, Recommend } from '@/app/Recommend/store/types'
+import { Singer } from '@/app/Singers/store/types'
 
 export const BASE_URL = 'https://netease-cloud-music-api-luckyporo.vercel.app'
 
@@ -22,4 +23,23 @@ export const getBannerListRequest = (): Promise<{ banners: Banner[] }> => {
 
 export const getRecommendListRequest = (): Promise<{ result: Recommend[] }> => {
   return instance.get('/personalized')
+}
+
+export const getHotSingerListRequest = (
+  count: number,
+): Promise<{ artists: Singer[] }> => {
+  return instance.get(`/top/artists?offset=${count}`)
+}
+
+export const getSingerListRequest = (
+  type: string,
+  area: string,
+  alpha: string,
+  count: number,
+): Promise<{ artists: Singer[] }> => {
+  return instance.get(
+    `artist/list?offset=${count}${type ? '&type=' + type : ''}${
+      area ? '&area=' + area : ''
+    }${alpha ? '&initial=' + alpha.toLowerCase() : ''}`,
+  )
 }
