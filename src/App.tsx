@@ -3,6 +3,7 @@ import { Provider } from 'react-redux'
 import { renderRoutes } from 'react-router-config'
 import { HashRouter } from 'react-router-dom'
 
+import { Data } from './app/Singers/data'
 import { IconStyle } from './assets/iconfont/iconfont'
 import routes from './routes'
 import store from './store'
@@ -13,7 +14,7 @@ const App = (): JSX.Element => (
     <HashRouter>
       <GlobalStyle></GlobalStyle>
       <IconStyle></IconStyle>
-      {renderRoutes(routes)}
+      <Data>{renderRoutes(routes)}</Data>
     </HashRouter>
   </Provider>
 )

@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useState } from 'react'
+import React, { memo, useContext, useEffect } from 'react'
 import LazyLoad, { forceCheck } from 'react-lazyload'
 
 import placeHolderImg from '/img/singer.png'
@@ -8,6 +8,7 @@ import Loading from '@/layout/loading'
 import { useAppDispatch, useAppSelector } from '@/store/hooks'
 import { alphaTypes, categoryTypes } from '@/utils/config'
 
+import { CategoryDataContext, CHANGE_ALPHA, CHANGE_CATEGORY } from './data'
 import {
   changePageCount,
   clearSingerList,
@@ -22,10 +23,8 @@ import {
 import { List, ListContainer, ListItem, NavContainer } from './style'
 
 const Singers = () => {
-  const [category, setCategory] = useState('')
-  const [type, setType] = useState('')
-  const [area, setArea] = useState('')
-  const [alpha, setAlpha] = useState('')
+  const categoryContext = useContext(CategoryDataContext)
+  const { category, alpha, type, area } = categoryContext.state
 
   const singerList = useAppSelector(selectSingerList)
   const enterLoading = useAppSelector(selectEnterLoading)
@@ -36,16 +35,11 @@ const Singers = () => {
 
   // 改变歌手分类
   const handleUpdateCategory = (val: string) => {
-    setCategory(val)
-    const target = categoryTypes.find((c) => c.key === val)
-    if (target) {
-      setType(target.type)
-      setArea(target.area)
-    }
+    categoryContext.dispatch({ type: CHANGE_CATEGORY, payload: val })
   }
   // 改变歌手字母
   const handleUpdateAlpha = (val: string) => {
-    setAlpha(val)
+    categoryContext.dispatch({ type: CHANGE_ALPHA, payload: val })
   }
 
   // 下拉更新
@@ -66,6 +60,12 @@ const Singers = () => {
       dispatch(getHotSingerList(0))
     }
   }
+
+  useEffect(() => {
+    if (!singerList.length) {
+      dispatch(getHotSingerList(0))
+    }
+  }, [])
 
   // 更新歌手列表
   useEffect(() => {
