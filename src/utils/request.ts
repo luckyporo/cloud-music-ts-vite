@@ -1,5 +1,6 @@
 import axios from 'axios'
 
+import { Rank } from '@/app/Rank/store/types'
 import { Banner, Recommend } from '@/app/Recommend/store/types'
 import { Singer } from '@/app/Singers/store/types'
 
@@ -42,4 +43,8 @@ export const getSingerListRequest = (
       area ? '&area=' + area : ''
     }${alpha ? '&initial=' + alpha.toLowerCase() : ''}`,
   )
+}
+
+export const getRankListRequest = (): Promise<{ list: Rank[] }> => {
+  return instance.get('/toplist/detail')
 }
