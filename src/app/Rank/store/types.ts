@@ -1,4 +1,9 @@
-export interface Rank {
+export type Track = {
+  first: string
+  second: string
+}
+
+export interface RankList {
   id: string
   name: string
   playCount: number
@@ -6,8 +11,11 @@ export interface Rank {
   description: string
   coverImgId: string
   subscribedCount: number
-  tracks: {
-    first: string
-    second: string
-  }[]
+  updateFrequency: string
+  tracks: Track[]
+}
+
+export type RankState = {
+  rankList: RankList[]
+  loading: boolean
 }
