@@ -2,6 +2,7 @@ import React from 'react'
 import { RouteConfig } from 'react-router-config'
 import { Redirect } from 'react-router-dom'
 
+import Album from '@/app/Album'
 import Home from '@/app/Home'
 import Rank from '@/app/Rank'
 import Recommend from '@/app/Recommend'
@@ -20,6 +21,12 @@ const routes: RouteConfig[] = [
       {
         path: '/recommend',
         component: Recommend,
+        routes: [
+          {
+            path: '/recommend/:id',
+            component: Album,
+          },
+        ],
       },
       {
         path: '/singers',

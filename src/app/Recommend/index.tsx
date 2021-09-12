@@ -1,5 +1,6 @@
 import React, { memo, useEffect } from 'react'
 import { forceCheck } from 'react-lazyload'
+import { renderRoutes, RouteConfigComponentProps } from 'react-router-config'
 
 import RecommendList from '@/components/list'
 import Scroll from '@/components/scroll'
@@ -16,7 +17,7 @@ import {
 } from './store/slice'
 import { Content } from './style'
 
-const Recommend = () => {
+const Recommend = ({ route }: RouteConfigComponentProps) => {
   const bannerList = useAppSelector(selectBannerList)
   const recommendList = useAppSelector(selectRecommendList)
   const enterLoading = useAppSelector(selectEnterLoading)
@@ -36,6 +37,7 @@ const Recommend = () => {
         </div>
       </Scroll>
       {enterLoading ? <Loading></Loading> : null}
+      {renderRoutes(route?.routes)}
     </Content>
   )
 }

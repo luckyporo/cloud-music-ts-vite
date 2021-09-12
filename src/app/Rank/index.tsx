@@ -1,5 +1,5 @@
 import React, { memo, useEffect } from 'react'
-import { renderRoutes, RouteConfig } from 'react-router-config'
+import { renderRoutes, RouteConfigComponentProps } from 'react-router-config'
 
 import Scroll from '@/components/scroll'
 import { useAppDispatch, useAppSelector } from '@/store/hooks'
@@ -21,11 +21,7 @@ const filterIdx = (name: string) => {
   else return null
 }
 
-type Props = {
-  route: RouteConfig
-}
-
-const Rank = ({ route }: Props) => {
+const Rank = ({ route }: RouteConfigComponentProps) => {
   const rankList = useAppSelector(selectRankList)
   const loading = useAppSelector(selectLoading)
   const dispatch = useAppDispatch()
@@ -98,7 +94,7 @@ const Rank = ({ route }: Props) => {
           {renderRankList(globalList, true)}
         </div>
       </Scroll>
-      {renderRoutes(route.routes)}
+      {renderRoutes(route?.routes)}
     </Container>
   )
 }
