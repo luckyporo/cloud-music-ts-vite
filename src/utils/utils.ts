@@ -14,6 +14,15 @@ export const getCount = (count: number): number | string => {
   }
 }
 
+export const getName = (list: { name: string }[]) => {
+  let str = ''
+  list.map((item, index) => {
+    str += index === 0 ? item.name : '/' + item.name
+    return item
+  })
+  return str
+}
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const debounce = (func: () => any, delay: number): (() => any) => {
   let timer: NodeJS.Timeout

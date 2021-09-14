@@ -1,5 +1,6 @@
 import axios from 'axios'
 
+import { Album } from '@/app/Album/store/typs'
 import { RankList } from '@/app/Rank/store/types'
 import { Banner, Recommend } from '@/app/Recommend/store/types'
 import { Singer } from '@/app/Singers/store/types'
@@ -47,4 +48,8 @@ export const getSingerListRequest = (
 
 export const getRankListRequest = (): Promise<{ list: RankList[] }> => {
   return instance.get('/toplist/detail')
+}
+
+export const getAlbumDetailRequest = (id: string): Promise<{ playlist: Album }> => {
+  return instance.get(`/playlist/detail?id=${id}`)
 }
