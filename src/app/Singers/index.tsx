@@ -1,5 +1,6 @@
 import React, { memo, useContext, useEffect } from 'react'
 import LazyLoad, { forceCheck } from 'react-lazyload'
+import { renderRoutes, RouteConfigComponentProps } from 'react-router-config'
 
 import placeHolderImg from '/img/singer.png'
 import Scroll from '@/components/scroll'
@@ -22,7 +23,7 @@ import {
 } from './store/slice'
 import { List, ListContainer, ListItem, NavContainer } from './style'
 
-const Singers = () => {
+const Singers = ({ history, route }: RouteConfigComponentProps) => {
   const categoryContext = useContext(CategoryDataContext)
   const { category, alpha, type, area } = categoryContext.state
 
@@ -32,6 +33,10 @@ const Singers = () => {
   const pullDownLoading = useAppSelector(selectPullDownLoading)
   const pullUpLoading = useAppSelector(selectPullUpLoading)
   const dispatch = useAppDispatch()
+
+  const enterDetail = (id: string) => {
+    history.push(`/singers/${id}`)
+  }
 
   // 改变歌手分类
   const handleUpdateCategory = (val: string) => {
@@ -104,7 +109,9 @@ const Singers = () => {
           <List>
             {singerList.map((item, index) => {
               return (
-                <ListItem key={item.accountId + '' + index}>
+                <ListItem
+                  key={item.accountId + '' + index}
+                  onClick={() => enterDetail(item.id)}>
                   <div className="img_wrapper">
                     <LazyLoad
                       placeholder={
@@ -131,6 +138,7 @@ const Singers = () => {
         </Scroll>
       </ListContainer>
       {enterLoading ? <Loading></Loading> : null}
+      {renderRoutes(route?.routes)}
     </div>
   )
 }

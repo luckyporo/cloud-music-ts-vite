@@ -1,4 +1,5 @@
 export interface Singer {
+  id: string
   name: string
   picUrl: string
   accountId: string

@@ -6,6 +6,7 @@ import Album from '@/app/Album'
 import Home from '@/app/Home'
 import Rank from '@/app/Rank'
 import Recommend from '@/app/Recommend'
+import Singer from '@/app/Singer'
 import Singers from '@/app/Singers'
 
 const routes: RouteConfig[] = [
@@ -31,6 +32,13 @@ const routes: RouteConfig[] = [
       {
         path: '/singers',
         component: Singers,
+        key: 'singers',
+        routes: [
+          {
+            path: '/singers/:id',
+            component: Singer,
+          },
+        ],
       },
       {
         path: '/rank',
