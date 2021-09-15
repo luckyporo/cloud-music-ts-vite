@@ -3,7 +3,6 @@ import { renderRoutes, RouteConfigComponentProps } from 'react-router-config'
 
 import Scroll from '@/components/scroll'
 import { useAppDispatch, useAppSelector } from '@/store/hooks'
-import { RankTypes } from '@/utils/config'
 
 import { getRankList, selectLoading, selectRankList } from './store/slice'
 import { RankList, Track } from './store/types'
@@ -15,13 +14,7 @@ const filterIndex = (rankList: RankList[]) => {
   }
 }
 
-const filterIdx = (name: string) => {
-  const key = Object.keys(RankTypes).find((key) => RankTypes[key] === name)
-  if (key) return key
-  else return null
-}
-
-const Rank = ({ route }: RouteConfigComponentProps) => {
+const Rank = ({ route, history }: RouteConfigComponentProps) => {
   const rankList = useAppSelector(selectRankList)
   const loading = useAppSelector(selectLoading)
   const dispatch = useAppDispatch()
@@ -34,12 +27,8 @@ const Rank = ({ route }: RouteConfigComponentProps) => {
   const officialList = rankList.slice(0, globalStartIndex)
   const globalList = rankList.slice(globalStartIndex)
 
-  const enterDetail = (name: string) => {
-    const idx = filterIdx(name)
-    if (idx === null) {
-      alert('暂无相关数据')
-      return
-    }
+  const enterDetail = (detail: RankList) => {
+    history.push(`/rank/${detail.id}`)
   }
 
   const renderSongList = (list: Track[]) => {
@@ -62,9 +51,9 @@ const Rank = ({ route }: RouteConfigComponentProps) => {
         {list.map((item) => {
           return (
             <ListItem
-              key={item.coverImgId}
+              key={item.id}
               tracks={item.tracks}
-              onClick={() => enterDetail(item.name)}>
+              onClick={() => enterDetail(item)}>
               <div className="img_wrapper">
                 <img src={item.coverImgUrl} alt="" />
                 <div className="decorate"></div>

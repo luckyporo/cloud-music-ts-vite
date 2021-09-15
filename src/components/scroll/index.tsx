@@ -23,7 +23,7 @@ type Props = {
   pullDownLoading?: boolean
   bounceTop?: boolean
   bounceBottom?: boolean
-  onScroll?: () => void
+  onScroll?: (() => void) | ((instance: BScrollInstance) => void)
   pullUp?: () => void
   pullDown?: () => void
   children: React.ReactNode
@@ -74,8 +74,8 @@ const Scroll = forwardRef(
 
     useEffect(() => {
       if (refresh && bScroll && onScroll) {
-        bScroll.on('scroll', () => {
-          onScroll()
+        bScroll.on('scroll', (instance: BScrollInstance) => {
+          onScroll(instance)
         })
 
         return () => {
